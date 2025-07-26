@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧮 Neo Calculator Pro v1.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="brand-title">
+                    <span class="title-icon">🧮</span>
+                    <h1 class="title-text">Neo Calculator Pro</h1>
+                    <span class="version-badge">v1.0</span>
+                </div>
+                
+                <div class="theme-controls">
+                    <label for="theme-select" class="theme-label">🎨 Theme:</label>
+                    <select id="theme-select" class="theme-dropdown">
+                        <option value="neon">Neon Blue</option>
+                        <option value="purple">Cosmic Purple</option>
+                        <option value="green">Matrix Green</option>
+                        <option value="orange">Sunset Orange</option>
+                        <option value="minimal">Minimal Dark</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Calculator Display -->
+            <section class="calculator-display">
+                <div class="display-container">
+                    <div id="history-display" class="history-display">0</div>
+                    <div id="main-display" class="main-display">0</div>
+                    <div class="display-info">
+                        <span id="operation-indicator" class="operation-indicator"></span>
+                        <span id="memory-indicator" class="memory-indicator">M</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculator Buttons -->
+            <section class="calculator-buttons">
+                <div class="button-grid">
+                    <!-- First Row - Memory & Clear -->
+                    <button class="btn btn-function" data-action="clear-all">AC</button>
+                    <button class="btn btn-function" data-action="clear">C</button>
+                    <button class="btn btn-function" data-action="memory-clear">MC</button>
+                    <button class="btn btn-function" data-action="memory-recall">MR</button>
+                    
+                    <!-- Second Row - Memory & Backspace -->
+                    <button class="btn btn-function" data-action="memory-add">M+</button>
+                    <button class="btn btn-function" data-action="memory-subtract">M-</button>
+                    <button class="btn btn-function" data-action="memory-store">MS</button>
+                    <button class="btn btn-function" data-action="backspace">⌫</button>
+                    
+                    <!-- Third Row - Numbers & Operations -->
+                    <button class="btn btn-number" data-number="7">7</button>
+                    <button class="btn btn-number" data-number="8">8</button>
+                    <button class="btn btn-number" data-number="9">9</button>
+                    <button class="btn btn-operator" data-operator="÷">÷</button>
+                    
+                    <!-- Fourth Row -->
+                    <button class="btn btn-number" data-number="4">4</button>
+                    <button class="btn btn-number" data-number="5">5</button>
+                    <button class="btn btn-number" data-number="6">6</button>
+                    <button class="btn btn-operator" data-operator="×">×</button>
+                    
+                    <!-- Fifth Row -->
+                    <button class="btn btn-number" data-number="1">1</button>
+                    <button class="btn btn-number" data-number="2">2</button>
+                    <button class="btn btn-number" data-number="3">3</button>
+                    <button class="btn btn-operator" data-operator="-">-</button>
+                    
+                    <!-- Sixth Row -->
+                    <button class="btn btn-number btn-zero" data-number="0">0</button>
+                    <button class="btn btn-function" data-action="decimal">.</button>
+                    <button class="btn btn-operator" data-operator="+">+</button>
+                    
+                    <!-- Seventh Row - Equals -->
+                    <button class="btn btn-equals" data-action="equals">=</button>
+                </div>
+            </section>
+
+            <!-- History Panel -->
+            <section class="history-panel">
+                <div class="history-header">
+                    <h3 class="history-title">📊 Calculation History</h3>
+                    <div class="history-controls">
+                        <button id="toggle-history" class="history-toggle">Show History</button>
+                        <button id="clear-history" class="history-clear">Clear All</button>
+                    </div>
+                </div>
+                
+                <div id="history-content" class="history-content">
+                    <div class="history-list" id="history-list">
+                        <div class="no-history">No calculations yet</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Functions -->
+            <section class="advanced-panel">
+                <div class="advanced-header">
+                    <h3 class="advanced-title">⚡ Advanced Functions</h3>
+                    <button id="toggle-advanced" class="advanced-toggle">Show Advanced</button>
+                </div>
+                
+                <div id="advanced-content" class="advanced-content">
+                    <div class="advanced-grid">
+                        <button class="btn btn-advanced" data-function="sqrt">√</button>
+                        <button class="btn btn-advanced" data-function="square">x²</button>
+                        <button class="btn btn-advanced" data-function="power">x^y</button>
+                        <button class="btn btn-advanced" data-function="percent">%</button>
+                        
+                        <button class="btn btn-advanced" data-function="sin">sin</button>
+                        <button class="btn btn-advanced" data-function="cos">cos</button>
+                        <button class="btn btn-advanced" data-function="tan">tan</button>
+                        <button class="btn btn-advanced" data-function="log">log</button>
+                        
+                        <button class="btn btn-advanced" data-function="ln">ln</button>
+                        <button class="btn btn-advanced" data-function="pi">π</button>
+                        <button class="btn btn-advanced" data-function="e">e</button>
+                        <button class="btn btn-advanced" data-function="factorial">n!</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Panel -->
+            <section class="settings-panel">
+                <div class="settings-header">
+                    <h3 class="settings-title">⚙️ Settings</h3>
+                </div>
+                
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <label for="sound-effects">Sound Effects</label>
+                        <input type="checkbox" id="sound-effects" class="setting-checkbox" checked>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="haptic-feedback">Haptic Feedback</label>
+                        <input type="checkbox" id="haptic-feedback" class="setting-checkbox" checked>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="decimal-places">Decimal Places</label>
+                        <select id="decimal-places" class="setting-select">
+                            <option value="auto">Auto</option>
+                            <option value="2">2 places</option>
+                            <option value="4">4 places</option>
+                            <option value="6">6 places</option>
+                            <option value="8">8 places</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="angle-unit">Angle Unit</label>
+                        <select id="angle-unit" class="setting-select">
+                            <option value="deg">Degrees</option>
+                            <option value="rad">Radians</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p class="footer-text">🧮 Neo Calculator Pro - Precision Meets Style</p>
+                <div class="footer-stats">
+                    <span id="calculations-count" class="stat">Calculations: 0</span>
+                    <span class="separator">|</span>
+                    <span id="session-time" class="stat">Session: 0m</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio Elements for Sound Effects -->
+    <audio id="button-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmUeBjiI0fPTgjEGJC0=" type="audio/wav">
+    </audio>
+    
+    <audio id="error-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmUeBjiI0fPTgjEGJC0=" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
